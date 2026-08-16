@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1001 причина гулять со мной ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(145deg, #0d0b1a, #1b1236, #281d47);
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.035);
+            backdrop-filter: blur(14px);
+            border-radius: 40px;
+            padding: 40px 30px;
+            max-width: 880px;
+            width: 100%;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+        h1 {
+            background: linear-gradient(135deg, #ff8aac, #c084fc, #7aa9ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        .sub {
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.95rem;
+            letter-spacing: 5px;
+            margin-top: 4px;
+            margin-bottom: 22px;
+            text-transform: uppercase;
+        }
+        .counter {
+            display: inline-block;
+            background: rgba(255, 138, 172, 0.08);
+            border: 1px solid rgba(255, 138, 172, 0.15);
+            color: #ff8aac;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 6px 24px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        #card {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 24px;
+            padding: 48px 28px;
+            min-height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            border-left: 4px solid #ff8aac;
+            box-shadow: inset 0 0 50px rgba(255, 138, 172, 0.02);
+        }
+        #reasonText {
+            color: #f2ecff;
+            font-size: 1.7rem;
+            line-height: 1.5;
+            font-weight: 300;
+            transition: opacity 0.2s ease;
+        }
+
+        .actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .actions button {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            color: #d6ccf0;
+            padding: 14px 34px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.25s ease;
+            font-weight: 400;
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(4px);
+        }
+        .actions button:hover {
+            background: rgba(255, 138, 172, 0.10);
+            border-color: #ff8aac;
+            color: #fff;
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(255, 138, 172, 0.04);
+        }
+
+        /* ===== КАРУСЕЛЬ С ФОТО ===== */
+        .carousel-wrapper {
+            width: 100%;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 24px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 0;
+            position: relative;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 16px;
+            animation: scrollPhotos 20s linear infinite;
+            width: max-content;
+        }
+        .carousel-track img {
+            height: 120px;
+            width: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            flex-shrink: 0;
+            border: 2px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.3s ease;
+        }
+        .carousel-track img:hover {
+            transform: scale(1.05);
+            border-color: #ff8aac;
+        }
+
+        @keyframes scrollPhotos {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Пауза при наведении */
+        .carousel-wrapper:hover .carousel-track {
+            animation-play-state: paused;
+        }
+
+        #progressWrap {
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            margin-top: 28px;
+            overflow: hidden;
+        }
+        #progressFill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff8aac, #c084fc, #7aa9ff);
+            transition: width 0.6s ease;
+        }
+        .footer {
+            color: rgba(255, 255, 255, 0.04);
+            margin-top: 16px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+        }
+
+        /* ===== Адаптив ===== */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+            #reasonText {
+                font-size: 1.2rem;
+            }
+            .container {
+                padding: 22px 16px;
+            }
+            #card {
+                padding: 30px 16px;
+                min-height: 160px;
+            }
+            .carousel-track img {
+                height: 80px;
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>1001 причина</h1>
+        <div class="sub">пойти гулять со мной</div>
+
+        <div class="counter" id="counterDisplay">1 / 1001</div>
+
+        <div id="card">
+            <div id="reasonText">Загрузка...</div>
+        </div>
+
+        <div class="actions">
+            <button id="randomBtn">✦ Новая</button>
+            <button id="nextBtn">→ Дальше</button>
+        </div>
+
+        <!-- ===== КАРУСЕЛЬ С ФОТОГРАФИЯМИ ===== -->
+        <div class="carousel-wrapper">
+            <div class="carousel-track" id="photoTrack">
+                <!-- Фото будут вставлены через JavaScript -->
+            </div>
+        </div>
+
+        <div id="progressWrap">
+            <div id="progressFill"></div>
+        </div>
+        <div class="footer">для тебя</div>
+    </div>
+
+    <script src="reasons.js"></script>
+    <script>
+        // =============================================================
+        // 1. ФОТОГРАФИИ ИЗ ПАПКИ images
+        // =============================================================
+        const photos = [
+            "images/photo1.jpg",
+            "images/photo2.jpg",
+            "images/photo3.jpg",
+            "images/photo4.jpg",
+            "images/photo5.jpg",
+            "images/photo6.jpg",
+            "images/photo7.jpg",
+            "images/photo8.jpg",
+            "images/photo9.jpg",
+            "images/photo10.jpg",
+            "images/photo11.jpg",
+            "images/photo12.jpg",
+            "images/photo13.jpg",
+            "images/photo14.jpg",
+            "images/photo15.jpg",
+            "images/photo16.jpg",
+            "images/photo17.jpg",
+            "images/photo18.jpg",
+        ];
+
+        // =============================================================
+        // 2. ЗАПОЛНЯЕМ КАРУСЕЛЬ (дублируем для бесконечности)
+        // =============================================================
+        const track = document.getElementById('photoTrack');
+
+        // Добавляем фото дважды для плавной бесконечной прокрутки
+        const allPhotos = [...photos, ...photos];
+        allPhotos.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Красивое фото';
+            img.loading = 'lazy';
+            track.appendChild(img);
+        });
+
+        // =============================================================
+        // 3. ЛОГИКА ПРИЧИН
+        // =============================================================
+        let currentIndex = 0;
+        const reasonText = document.getElementById('reasonText');
+        const counterDisplay = document.getElementById('counterDisplay');
+        const progressFill = document.getElementById('progressFill');
+
+        function showReason(index) {
+            const safe = index % finalReasons.length;
+            currentIndex = safe;
+            reasonText.textContent = finalReasons[safe];
+            counterDisplay.textContent = `${safe + 1} / ${finalReasons.length}`;
+            progressFill.style.width = ((safe + 1) / finalReasons.length * 100) + '%';
+            reasonText.style.opacity = '0';
+            setTimeout(() => reasonText.style.opacity = '1', 140);
+        }
+
+        document.getElementById('randomBtn').addEventListener('click', () => {
+            showReason(Math.floor(Math.random() * finalReasons.length));
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            showReason((currentIndex + 1) % finalReasons.length);
+        });
+
+        if (typeof finalReasons !== 'undefined' && finalReasons.length > 0) {
+            showReason(0);
+        } else {
+            reasonText.textContent = 'Загрузка...';
+        }
+    </script>
+</body>
+</html>
