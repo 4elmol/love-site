@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1001 причина гулять со мной ❤️</title>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <title>1001 причина ❤️</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: linear-gradient(145deg, #0d0b1a, #1b1236, #281d47);
             font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
@@ -21,7 +16,7 @@
             padding: 20px;
         }
         .container {
-            background: rgba(255, 255, 255, 0.035);
+            background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(14px);
             border-radius: 40px;
             padding: 40px 30px;
@@ -48,24 +43,15 @@
             cursor: pointer;
             transition: 0.25s ease;
             font-weight: 500;
-            letter-spacing: 0.5px;
         }
-        .tab-btn:hover {
-            background: rgba(255, 138, 172, 0.06);
-            color: #fff;
-        }
+        .tab-btn:hover { background: rgba(255, 138, 172, 0.06); color: #fff; }
         .tab-btn.active {
             background: rgba(255, 138, 172, 0.12);
             border-color: #ff8aac;
             color: #ff8aac;
         }
-        .page {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        .page.active {
-            display: block;
-        }
+        .page { display: none; animation: fadeIn 0.3s ease; }
+        .page.active { display: block; }
         @keyframes fadeIn {
             0% { opacity: 0; transform: translateY(6px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -77,15 +63,13 @@
             -webkit-text-fill-color: transparent;
             font-size: 2.8rem;
             font-weight: 600;
-            letter-spacing: -0.5px;
         }
         .sub {
             color: rgba(255, 255, 255, 0.25);
             font-size: 0.95rem;
             letter-spacing: 5px;
-            margin-top: 4px;
-            margin-bottom: 22px;
             text-transform: uppercase;
+            margin-bottom: 22px;
         }
         .counter {
             display: inline-block;
@@ -109,7 +93,6 @@
             justify-content: center;
             margin-bottom: 28px;
             border-left: 4px solid #ff8aac;
-            box-shadow: inset 0 0 50px rgba(255, 138, 172, 0.02);
         }
         #reasonText {
             color: #f2ecff;
@@ -135,7 +118,6 @@
             cursor: pointer;
             transition: 0.25s ease;
             font-weight: 400;
-            letter-spacing: 0.4px;
             backdrop-filter: blur(4px);
         }
         .actions button:hover {
@@ -143,7 +125,6 @@
             border-color: #ff8aac;
             color: #fff;
             transform: scale(1.03);
-            box-shadow: 0 0 30px rgba(255, 138, 172, 0.04);
         }
         .carousel-wrapper {
             width: 100%;
@@ -152,7 +133,6 @@
             margin-bottom: 24px;
             background: rgba(0, 0, 0, 0.2);
             padding: 10px 0;
-            position: relative;
         }
         .carousel-track {
             display: flex;
@@ -177,9 +157,7 @@
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .carousel-wrapper:hover .carousel-track {
-            animation-play-state: paused;
-        }
+        .carousel-wrapper:hover .carousel-track { animation-play-state: paused; }
         #progressWrap {
             width: 100%;
             height: 2px;
@@ -200,10 +178,7 @@
             font-size: 0.7rem;
             letter-spacing: 3px;
         }
-        .note-app {
-            text-align: left;
-            margin-top: 10px;
-        }
+        .note-app { text-align: left; margin-top: 10px; }
         .note-app .note-input-area {
             display: flex;
             gap: 10px;
@@ -248,7 +223,6 @@
         .note-app .note-input-area .note-add-btn:hover {
             background: rgba(255, 138, 172, 0.15);
             border-color: #ff8aac;
-            transform: scale(1.02);
         }
         .note-app .note-list {
             display: flex;
@@ -282,46 +256,12 @@
         .note-item:hover {
             background: rgba(255, 255, 255, 0.06);
         }
-        .note-item.pinned {
-            border-left: 3px solid #ff8aac;
-            background: rgba(255, 138, 172, 0.04);
-        }
         .note-item .note-text {
             color: #f2ecff;
             font-size: 0.95rem;
             line-height: 1.5;
             word-break: break-word;
             flex: 1;
-        }
-        .note-item .note-textarea-edit {
-            display: none;
-            flex: 1;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 138, 172, 0.2);
-            border-radius: 12px;
-            color: #f2ecff;
-            font-size: 0.95rem;
-            padding: 8px 12px;
-            font-family: inherit;
-            line-height: 1.5;
-            resize: vertical;
-            outline: none;
-            min-height: 40px;
-        }
-        .note-item .note-textarea-edit:focus {
-            border-color: #c084fc;
-        }
-        .note-item.editing .note-text {
-            display: none;
-        }
-        .note-item.editing .note-textarea-edit {
-            display: block;
-        }
-        .note-item .note-actions {
-            display: flex;
-            gap: 4px;
-            flex-shrink: 0;
-            flex-wrap: wrap;
         }
         .note-item .note-actions button {
             background: rgba(255, 255, 255, 0.04);
@@ -337,32 +277,7 @@
             background: rgba(255, 255, 255, 0.08);
             color: #fff;
         }
-        .note-item .note-actions .edit-btn:hover {
-            border-color: #c084fc;
-            color: #c084fc;
-        }
         .note-item .note-actions .delete-btn:hover {
-            border-color: #ff6b6b;
-            color: #ff6b6b;
-        }
-        .note-item .note-actions .pin-btn:hover {
-            border-color: #ff8aac;
-            color: #ff8aac;
-        }
-        .note-item .note-actions .pin-btn.pinned {
-            border-color: #ff8aac;
-            color: #ff8aac;
-            background: rgba(255, 138, 172, 0.08);
-        }
-        .note-item .note-actions .save-edit-btn {
-            border-color: rgba(132, 255, 132, 0.2);
-            color: rgba(132, 255, 132, 0.5);
-        }
-        .note-item .note-actions .save-edit-btn:hover {
-            border-color: #84ff84;
-            color: #84ff84;
-        }
-        .note-item .note-actions .cancel-edit-btn:hover {
             border-color: #ff6b6b;
             color: #ff6b6b;
         }
@@ -395,10 +310,6 @@
             #card { padding: 18px 12px !important; min-height: 100px !important; }
             .actions button { font-size: 0.7rem !important; padding: 8px 14px !important; min-width: 60px !important; }
             .carousel-track img { height: 55px !important; width: 85px !important; }
-            .note-item .note-text { font-size: 0.8rem !important; }
-            .note-item .note-actions button { font-size: 0.55rem !important; padding: 3px 6px !important; }
-            .note-app .note-input-area textarea { font-size: 0.8rem !important; min-height: 40px !important; padding: 8px 12px !important; }
-            .note-app .note-input-area .note-add-btn { font-size: 0.8rem !important; padding: 8px 16px !important; }
         }
     </style>
 </head>
@@ -454,217 +365,63 @@
 
     <script>
         // =============================================================
-        // SUPABASE
+        // ⚠️ ССЫЛКА НА GOOGLE SHEETS (уже вставлена!)
         // =============================================================
-        var SUPABASE_URL = 'https://naybrmqbtufadjmnkxo.supabase.co';
-        var SUPABASE_ANON_KEY = 'sb_publishable_56WYU9UGoEFyBNyqUOaC2A_H2a52ORS';
-        var supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxd_xQQBZyrxbTFGZ_428_Fcl_WrDzKLHL7y950_PiT6YtizkV_h-EuMI42c6eLVq5/exec';
 
         // =============================================================
         // 1001 ПРИЧИНА
         // =============================================================
         var baseReasons = [
-            "Чтобы я мог смотреть в твои глаза и забывать, как дышать.",
-            "Я хочу услышать твой смех вживую — он лучше любой песни.",
-            "Потому что в тишине между нами рождается что-то интересное.",
-            "Я хочу запомнить, как пахнут твои волосы, когда мы идём рядом.",
-            "Чтобы мы вместе посмеялись над чем-то, что поймём только мы.",
-            "Я хочу показать тебе, что я умею слушать.",
-            "Потому что с тобой даже обычный день становится приключением.",
-            "Я хочу увидеть, как ты смотришь на мир — это вдохновляет.",
-            "Чтобы я мог сказать тебе «ты красивая» не в сообщении, а глядя в глаза.",
-            "Я хочу, чтобы ты почувствовала себя самой важной на свете.",
-            "Потому что я хочу узнать, что делает тебя счастливой.",
-            "Я хочу держать тебя за руку и молчать — и это будет идеально.",
-            "Чтобы ты увидела меня настоящего — без масок.",
-            "Я хочу, чтобы ты знала: рядом с тобой я чувствую себя лучше.",
-            "Потому что я хочу создать с тобой воспоминания, которые останутся.",
-            "Я хочу слушать, как ты рассказываешь о мечтах.",
-            "Чтобы мы вместе придумали секрет, который останется только у нас.",
-            "Я хочу увидеть твою улыбку, когда ты поймёшь, что я серьёзно.",
-            "Потому что я хочу быть тем, кто согреет тебя в холодный вечер.",
-            "Я хочу, чтобы ты знала: я выбрал тебя не случайно.",
-            "Чтобы мы могли говорить о важном и о пустяках — и это было ценно.",
-            "Я хочу чувствовать твоё дыхание рядом — это успокаивает.",
-            "Потому что я хочу, чтобы ты улыбнулась, вспоминая меня.",
-            "Я хочу показать тебе, какой я бываю нежным.",
-            "Чтобы ты поняла: я не боюсь быть уязвимым рядом с тобой.",
-            "Я хочу узнать твои маленькие привычки, которые никто не замечает.",
-            "Потому что я хочу стать частью твоего дня, а не просто смс.",
-            "Я хочу смотреть на закат и видеть не небо, а отражение твоих глаз.",
-            "Чтобы мы вместе искали красивое в обычных вещах.",
-            "Я хочу, чтобы ты знала: я готов ждать тебя сколько угодно.",
-            "Потому что я хочу, чтобы ты была моим уютом.",
-            "Я хочу, чтобы ты смеялась надо мной, а я — над собой.",
-            "Чтобы я мог сказать тебе «спасибо» за то, что ты есть.",
-            "Я хочу узнать, о чём ты думаешь, когда смотришь в окно.",
-            "Потому что я хочу быть тем, кто заставит тебя поверить в чудо.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности рядом со мной.",
-            "Чтобы мы вместе создали что-то, что не разрушит время.",
-            "Я хочу слышать твой голос вживую — он невероятный.",
-            "Потому что я хочу, чтобы ты знала: ты — моя лучшая мысль.",
-            "Я хочу, чтобы ты улыбнулась, и мир стал ярче.",
-            "Чтобы мы могли молчать вместе, и это не было странно.",
-            "Я хочу, чтобы ты увидела мои глаза, когда я смотрю на тебя.",
-            "Потому что я хочу быть тем, кто скажет тебе правду.",
-            "Я хочу, чтобы ты запомнила этот день как начало.",
-            "Чтобы мы вместе пошли туда, где нет интернета, а есть мы.",
-            "Я хочу, чтобы ты знала: я горжусь тем, что я рядом с тобой.",
-            "Потому что я хочу, чтобы ты была счастлива — и я стал причиной.",
-            "Я хочу, чтобы ты чувствовала себя желанной и нужной.",
-            "Чтобы мы вместе посмотрели на звёзды и придумали свою.",
-            "Я хочу, чтобы ты знала: ты — единственная, кто заставляет меня улыбаться.",
-            "Потому что я хочу, чтобы наша прогулка стала началом чего-то большого.",
-            "Я хочу обнять тебя и почувствовать, что я дома.",
-            "Чтобы мы вместе потанцевали под музыку, которую никто не слышит.",
-            "Я хочу знать, какие книги ты любишь, и прочитать их все.",
-            "Потому что я хочу, чтобы ты увидела мир моими глазами.",
-            "Я хочу, чтобы ты была моим самым лучшим воспоминанием.",
-            "Чтобы мы вместе придумали нашу собственную вселенную.",
-            "Я хочу, чтобы ты знала: я думаю о тебе чаще, чем могу признаться.",
-            "Потому что я хочу, чтобы ты была моей музой.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности, когда я рядом.",
-            "Чтобы мы вместе смеялись над старыми фотографиями.",
-            "Я хочу узнать, что тебя вдохновляет.",
-            "Потому что я хочу быть тем, кто будет беречь твой сон.",
-            "Я хочу, чтобы ты знала: я готов слушать тебя бесконечно.",
-            "Чтобы мы вместе нашли место, которое станет нашим.",
-            "Я хочу, чтобы ты запомнила, как я смотрю на тебя.",
-            "Потому что я хочу быть тем, кто успокоит тебя, когда тревожно.",
-            "Я хочу знать, какие фильмы заставляют тебя плакать.",
-            "Чтобы мы вместе придумали новые слова только для нас.",
-            "Я хочу, чтобы ты знала: ты — лучшее, что со мной случилось.",
-            "Потому что я хочу, чтобы ты была рядом, когда мне будет грустно.",
-            "Я хочу, чтобы ты смеялась так, чтобы слёзы текли.",
-            "Чтобы мы вместе загадали одно желание на двоих.",
-            "Я хочу, чтобы ты чувствовала себя особенной — потому что ты особенная.",
-            "Потому что я хочу, чтобы ты была частью моей истории.",
-            "Я хочу, чтобы ты знала: я не устаю думать о тебе.",
-            "Чтобы мы вместе сделали что-то безумное.",
-            "Я хочу, чтобы ты была моим якорем.",
-            "Потому что я хочу, чтобы ты улыбалась, когда думаешь обо мне.",
-            "Я хочу знать, что тебя пугает, чтобы быть рядом.",
-            "Чтобы мы вместе нашли ответы на вопросы, которые не задавали.",
-            "Я хочу, чтобы ты была моим самым счастливым днём.",
-            "Потому что я хочу, чтобы ты чувствовала себя нужной.",
-            "Я хочу, чтобы ты знала: я верю в тебя больше, чем ты сама.",
-            "Чтобы мы вместе провели день без телефонов.",
-            "Я хочу, чтобы ты запомнила запах этого вечера.",
-            "Потому что я хочу, чтобы ты была моим вдохновением.",
-            "Я хочу, чтобы ты чувствовала себя свободной рядом со мной.",
-            "Чтобы мы вместе придумали новый язык.",
-            "Я хочу, чтобы ты знала: я выбираю тебя каждый день.",
-            "Потому что я хочу, чтобы ты была счастлива просто так.",
-            "Я хочу, чтобы ты увидела, каким я становлюсь рядом с тобой.",
-            "Чтобы мы вместе спорили о глупостях и мирились.",
-            "Я хочу, чтобы ты была моей самой любимой привычкой.",
-            "Потому что я хочу, чтобы ты знала: ты — моя сила.",
-            "Я хочу, чтобы ты чувствовала себя красивой — потому что ты красивая.",
-            "Чтобы мы вместе молчали и понимали друг друга.",
-            "Я хочу, чтобы ты была моим самым тёплым воспоминанием.",
-            "Потому что я хочу, чтобы ты была первой, кого я вижу утром.",
-            "Я хочу, чтобы ты знала: я благодарен за каждый момент с тобой.",
-            "Чтобы мы вместе нашли что-то, что потеряли.",
-            "Я хочу, чтобы ты была моим самым большим счастьем.",
-            "Потому что я хочу, чтобы ты улыбалась, глядя на меня.",
-            "Я хочу, чтобы ты знала: ты — моя самая любимая история.",
-            "Чтобы я мог просыпаться и знать, что ты есть на этом свете.",
-            "Я хочу, чтобы ты была моей самой любимой историей.",
-            "Потому что с тобой я верю, что чудеса существуют.",
-            "Я хочу, чтобы ты знала: я буду помнить тебя всегда.",
-            "Чтобы мы вместе смотрели на дождь и не боялись промокнуть.",
-            "Я хочу, чтобы ты была моим первым и последним мыслями за день.",
-            "Потому что я хочу, чтобы ты была со мной в самые важные моменты.",
-            "Я хочу, чтобы ты знала: ты делаешь меня лучше.",
-            "Чтобы мы вместе смеялись над ошибками и не боялись их.",
-            "Я хочу, чтобы ты чувствовала моё внимание даже на расстоянии.",
-            "Потому что я хочу, чтобы ты была моим самым большим достижением.",
-            "Я хочу, чтобы ты знала: я горжусь тем, что я рядом с тобой.",
-            "Чтобы мы вместе создали мир, где есть только мы.",
-            "Я хочу, чтобы ты была моим вдохновением каждый день.",
-            "Потому что я хочу, чтобы ты была счастлива просто потому, что я рядом.",
-            "Я хочу, чтобы ты знала: ты — самая красивая девушка на свете.",
-            "Чтобы мы вместе путешествовали и искали приключения.",
-            "Я хочу, чтобы ты была моей самой любимой песней.",
-            "Потому что я хочу, чтобы ты знала: я всегда буду рядом.",
-            "Я хочу, чтобы ты чувствовала себя любимой каждый день.",
-            "Чтобы мы вместе смотрели на мир и улыбались.",
-            "Я хочу, чтобы ты была моей самой лучшей подругой.",
-            "Потому что я хочу, чтобы ты знала: ты — моя вселенная.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности в моих руках.",
-            "Чтобы мы вместе мечтали и верили в свои мечты.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая радость.",
-            "Я хочу, чтобы ты чувствовала себя самой желанной.",
-            "Чтобы мы вместе создали дом, где будет уютно.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая радость.",
-            "Потому что я хочу, чтобы ты была счастлива каждый день.",
-            "Я хочу, чтобы ты чувствовала себя самой красивой.",
-            "Чтобы мы вместе вырастили воспоминания.",
-            "Я хочу, чтобы ты знала: ты — моя судьба.",
-            "Потому что я хочу, чтобы ты была моей лучшей подругой.",
-            "Я хочу, чтобы ты чувствовала себя нужной каждый день.",
-            "Чтобы мы вместе состарились и держались за руки.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая любовь.",
-            "Потому что я хочу, чтобы ты была счастлива со мной.",
-            "Я хочу, чтобы ты чувствовала себя любимой и желанной.",
-            "Чтобы мы вместе жили долго и счастливо.",
-            "Я хочу, чтобы ты знала: ты — моя половинка.",
-            "Потому что я хочу, чтобы ты была моей музой.",
-            "Я хочу, чтобы ты чувствовала себя особенной каждый день.",
-            "Чтобы мы вместе создали что-то настоящее.",
-            "Я хочу, чтобы ты знала: ты — моё всё.",
-            "Потому что я хочу, чтобы ты была моим самым большим счастьем.",
-            "Я хочу, чтобы ты чувствовала себя самой красивой.",
-            "Чтобы мы вместе жили в гармонии и любви.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая мечта.",
-            "Потому что я хочу, чтобы ты была моей спутницей жизни.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности в моих объятиях.",
-            "Чтобы мы вместе путешествовали по миру.",
-            "Я хочу, чтобы ты знала: я буду рядом с тобой всегда.",
-            "Потому что я хочу, чтобы ты была моей лучшей подругой.",
-            "Я хочу, чтобы ты чувствовала себя любимой каждый день.",
-            "Чтобы мы вместе смеялись и радовались жизни.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая ценность.",
-            "Потому что я хочу, чтобы ты была моей единственной.",
-            "Я хочу, чтобы ты чувствовала себя счастливой и свободной.",
-            "Чтобы мы вместе строили планы на будущее.",
-            "Я хочу, чтобы ты знала: ты — моё вдохновение.",
-            "Потому что я хочу, чтобы ты была моей музой.",
-            "Я хочу, чтобы ты чувствовала себя любимой и желанной.",
-            "Чтобы мы вместе создали дом, полный любви.",
-            "Я хочу, чтобы ты знала: я всегда буду рядом.",
-            "Потому что я хочу, чтобы ты была моей семьёй.",
-            "Я хочу, чтобы ты чувствовала себя счастливой каждый день.",
-            "Чтобы мы вместе пережили всё и стали сильнее.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая любовь.",
-            "Потому что я хочу, чтобы ты была моей спутницей жизни.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности в моих руках.",
-            "Чтобы мы вместе путешествовали и искали приключения.",
-            "Я хочу, чтобы ты знала: ты — моя самая красивая мечта.",
-            "Потому что я хочу, чтобы ты была моей спутницей жизни.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности в моих объятиях.",
-            "Чтобы мы вместе путешествовали по миру.",
-            "Я хочу, чтобы ты знала: я буду рядом с тобой всегда.",
-            "Потому что я хочу, чтобы ты была моей лучшей подругой.",
-            "Я хочу, чтобы ты чувствовала себя любимой каждый день.",
-            "Чтобы мы вместе смеялись и радовались жизни.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая ценность.",
-            "Потому что я хочу, чтобы ты была моей единственной.",
-            "Я хочу, чтобы ты чувствовала себя счастливой и свободной.",
-            "Чтобы мы вместе строили планы на будущее.",
-            "Я хочу, чтобы ты знала: ты — моё вдохновение.",
-            "Потому что я хочу, чтобы ты была моей музой.",
-            "Я хочу, чтобы ты чувствовала себя любимой и желанной.",
-            "Чтобы мы вместе создали дом, полный любви.",
-            "Я хочу, чтобы ты знала: я всегда буду рядом.",
-            "Потому что я хочу, чтобы ты была моей семьёй.",
-            "Я хочу, чтобы ты чувствовала себя счастливой каждый день.",
-            "Чтобы мы вместе пережили всё и стали сильнее.",
-            "Я хочу, чтобы ты знала: ты — моя самая большая любовь.",
-            "Потому что я хочу, чтобы ты была моей спутницей жизни.",
-            "Я хочу, чтобы ты чувствовала себя в безопасности в моих руках.",
-            "Чтобы мы вместе путешествовали и искали приключения.",
-            "Я хочу, чтобы ты знала: ты — моя самая красивая мечта."
+            "Чтобы я мог смотреть в твои глаза", "Я хочу услышать твой смех вживую",
+            "Потому что в тишине между нами рождается что-то интересное",
+            "Я хочу запомнить, как пахнут твои волосы",
+            "Чтобы мы вместе посмеялись над чем-то, что поймём только мы",
+            "Я хочу показать тебе, что я умею слушать",
+            "Потому что с тобой даже обычный день становится приключением",
+            "Я хочу увидеть, как ты смотришь на мир",
+            "Чтобы я мог сказать тебе «ты красивая» вживую",
+            "Я хочу, чтобы ты почувствовала себя самой важной на свете",
+            "Потому что я хочу узнать, что делает тебя счастливой",
+            "Я хочу держать тебя за руку и молчать",
+            "Чтобы ты увидела меня настоящего — без масок",
+            "Я хочу, чтобы ты знала: рядом с тобой я чувствую себя лучше",
+            "Потому что я хочу создать с тобой воспоминания",
+            "Я хочу слушать, как ты рассказываешь о мечтах",
+            "Чтобы мы вместе придумали секрет, который останется только у нас",
+            "Я хочу увидеть твою улыбку, когда ты поймёшь, что я серьёзно",
+            "Потому что я хочу быть тем, кто согреет тебя в холодный вечер",
+            "Я хочу, чтобы ты знала: я выбрал тебя не случайно",
+            "Чтобы мы могли говорить о важном и о пустяках",
+            "Я хочу чувствовать твоё дыхание рядом",
+            "Потому что я хочу, чтобы ты улыбнулась, вспоминая меня",
+            "Я хочу показать тебе, какой я бываю нежным",
+            "Чтобы ты поняла: я не боюсь быть уязвимым рядом с тобой",
+            "Я хочу узнать твои маленькие привычки",
+            "Потому что я хочу стать частью твоего дня",
+            "Я хочу смотреть на закат и видеть отражение твоих глаз",
+            "Чтобы мы вместе искали красивое в обычных вещах",
+            "Я хочу, чтобы ты знала: я готов ждать тебя сколько угодно",
+            "Потому что я хочу, чтобы ты была моим уютом",
+            "Я хочу, чтобы ты смеялась надо мной, а я — над собой",
+            "Чтобы я мог сказать тебе «спасибо» за то, что ты есть",
+            "Я хочу узнать, о чём ты думаешь, когда смотришь в окно",
+            "Потому что я хочу быть тем, кто заставит тебя поверить в чудо",
+            "Я хочу, чтобы ты чувствовала себя в безопасности рядом со мной",
+            "Чтобы мы вместе создали что-то, что не разрушит время",
+            "Я хочу слышать твой голос вживую",
+            "Потому что я хочу, чтобы ты знала: ты — моя лучшая мысль",
+            "Я хочу, чтобы ты улыбнулась, и мир стал ярче",
+            "Чтобы мы могли молчать вместе, и это не было странно",
+            "Я хочу, чтобы ты увидела мои глаза, когда я смотрю на тебя",
+            "Потому что я хочу быть тем, кто скажет тебе правду",
+            "Я хочу, чтобы ты запомнила этот день как начало",
+            "Чтобы мы вместе пошли туда, где нет интернета, а есть мы",
+            "Я хочу, чтобы ты знала: я горжусь тем, что я рядом с тобой",
+            "Потому что я хочу, чтобы ты была счастлива — и я стал причиной",
+            "Я хочу, чтобы ты чувствовала себя желанной и нужной",
+            "Чтобы мы вместе посмотрели на звёзды и придумали свою",
+            "Я хочу, чтобы ты знала: ты — единственная, кто заставляет меня улыбаться"
         ];
 
         var prefixes = [
@@ -723,14 +480,11 @@
             counterDisplay.textContent = (safe + 1) + ' / ' + finalReasons.length;
             progressFill.style.width = ((safe + 1) / finalReasons.length * 100) + '%';
             reasonText.style.opacity = '0';
-            setTimeout(function() {
-                reasonText.style.opacity = '1';
-            }, 140);
+            setTimeout(function() { reasonText.style.opacity = '1'; }, 140);
         }
 
         document.getElementById('randomBtn').addEventListener('click', function() {
-            var randomIndex = Math.floor(Math.random() * finalReasons.length);
-            showReason(randomIndex);
+            showReason(Math.floor(Math.random() * finalReasons.length));
         });
 
         document.getElementById('nextBtn').addEventListener('click', function() {
@@ -762,67 +516,27 @@
         }
 
         // =============================================================
-        // ЗАМЕТКИ И ПОЖЕЛАНИЯ (SUPABASE)
+        // ОТПРАВКА В GOOGLE SHEETS
         // =============================================================
-        function escapeHtml(text) {
-            var div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        async function loadNotes(type) {
-            var result = await supabase
-                .from('notes')
-                .select('*')
-                .eq('type', type)
-                .order('created_at', { ascending: false });
-            if (result.error) {
-                console.error('Ошибка загрузки:', result.error);
-                return [];
-            }
-            return result.data || [];
-        }
-
-        async function addNoteToSupabase(type, text) {
-            var result = await supabase
-                .from('notes')
-                .insert([{ type: type, text: text, pinned: false }])
-                .select();
-            if (result.error) {
-                console.error('Ошибка добавления:', result.error);
-                return null;
-            }
-            return result.data[0];
-        }
-
-        async function deleteNoteFromSupabase(id) {
-            var result = await supabase
-                .from('notes')
-                .delete()
-                .eq('id', id);
-            if (result.error) {
-                console.error('Ошибка удаления:', result.error);
+        async function sendToGoogleSheets(type, text) {
+            try {
+                var response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: type, text: text })
+                });
+                return true;
+            } catch (error) {
+                console.error('Ошибка отправки:', error);
                 return false;
             }
-            return true;
         }
 
-        async function updateNoteInSupabase(id, updates) {
-            var result = await supabase
-                .from('notes')
-                .update(updates)
-                .eq('id', id);
-            if (result.error) {
-                console.error('Ошибка обновления:', result.error);
-                return false;
-            }
-            return true;
-        }
-
+        // =============================================================
+        // ЗАМЕТКИ
+        // =============================================================
         var notesData = [];
-        var wishesData = [];
-        var notesEditingId = null;
-        var wishesEditingId = null;
 
         function renderNotes() {
             var list = document.getElementById('notesList');
@@ -830,257 +544,37 @@
                 list.innerHTML = '<div class="note-empty">📝 Нет заметок. Напиши что-нибудь!</div>';
                 return;
             }
-            var sorted = notesData.slice().sort(function(a, b) {
-                return (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0);
-            });
             var html = '';
-            for (var i = 0; i < sorted.length; i++) {
-                var n = sorted[i];
-                var isEditing = notesEditingId === n.id;
-                var isPinned = n.pinned || false;
-                html += '<div class="note-item ' + (isPinned ? 'pinned' : '') + ' ' + (isEditing ? 'editing' : '') + '">';
-                html += '<div class="note-text">' + escapeHtml(n.text) + '</div>';
-                html += '<textarea class="note-textarea-edit">' + escapeHtml(n.text) + '</textarea>';
-                html += '<div class="note-actions">';
-                if (isEditing) {
-                    html += '<button class="save-edit-btn" onclick="saveNoteEdit(\'' + n.id + '\')">💾</button>';
-                    html += '<button class="cancel-edit-btn" onclick="cancelNoteEdit()">✖</button>';
-                } else {
-                    html += '<button class="pin-btn ' + (isPinned ? 'pinned' : '') + '" onclick="toggleNotePin(\'' + n.id + '\', ' + n.pinned + ')">📌</button>';
-                    html += '<button class="edit-btn" onclick="startNoteEdit(\'' + n.id + '\')">✏️</button>';
-                    html += '<button class="delete-btn" onclick="deleteNote(\'' + n.id + '\')">🗑️</button>';
-                }
-                html += '</div></div>';
+            for (var i = 0; i < notesData.length; i++) {
+                var n = notesData[i];
+                html += '<div class="note-item">';
+                html += '<div class="note-text">' + n.text + '</div>';
+                html += '<div class="note-actions"><button class="delete-btn" onclick="deleteNote(' + i + ')">🗑️</button></div>';
+                html += '</div>';
             }
             list.innerHTML = html;
         }
 
-        function renderWishes() {
-            var list = document.getElementById('wishesList');
-            if (wishesData.length === 0) {
-                list.innerHTML = '<div class="note-empty">🌟 Нет пожеланий. Напиши что хочешь!</div>';
-                return;
-            }
-            var sorted = wishesData.slice().sort(function(a, b) {
-                return (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0);
-            });
-            var html = '';
-            for (var i = 0; i < sorted.length; i++) {
-                var n = sorted[i];
-                var isEditing = wishesEditingId === n.id;
-                var isPinned = n.pinned || false;
-                html += '<div class="note-item ' + (isPinned ? 'pinned' : '') + ' ' + (isEditing ? 'editing' : '') + '">';
-                html += '<div class="note-text">' + escapeHtml(n.text) + '</div>';
-                html += '<textarea class="note-textarea-edit">' + escapeHtml(n.text) + '</textarea>';
-                html += '<div class="note-actions">';
-                if (isEditing) {
-                    html += '<button class="save-edit-btn" onclick="saveWishEdit(\'' + n.id + '\')">💾</button>';
-                    html += '<button class="cancel-edit-btn" onclick="cancelWishEdit()">✖</button>';
-                } else {
-                    html += '<button class="pin-btn ' + (isPinned ? 'pinned' : '') + '" onclick="toggleWishPin(\'' + n.id + '\', ' + n.pinned + ')">📌</button>';
-                    html += '<button class="edit-btn" onclick="startWishEdit(\'' + n.id + '\')">✏️</button>';
-                    html += '<button class="delete-btn" onclick="deleteWish(\'' + n.id + '\')">🗑️</button>';
-                }
-                html += '</div></div>';
-            }
-            list.innerHTML = html;
-        }
-
-        // ===== ЗАМЕТКИ =====
         async function addNote() {
             var input = document.getElementById('notesInput');
             var text = input.value.trim();
             if (!text) return;
-            var newNote = await addNoteToSupabase('note', text);
-            if (newNote) {
-                notesData.unshift(newNote);
+
+            var success = await sendToGoogleSheets('note', text);
+            if (success) {
+                notesData.push({ text: text });
                 input.value = '';
                 renderNotes();
+            } else {
+                alert('Не удалось сохранить заметку. Проверь интернет.');
             }
         }
 
-        window.deleteNote = async function(id) {
-            var success = await deleteNoteFromSupabase(id);
-            if (success) {
-                var newData = [];
-                for (var i = 0; i < notesData.length; i++) {
-                    if (notesData[i].id !== id) {
-                        newData.push(notesData[i]);
-                    }
-                }
-                notesData = newData;
-                notesEditingId = null;
-                renderNotes();
-            }
-        };
-
-        window.toggleNotePin = async function(id, currentPinned) {
-            var success = await updateNoteInSupabase(id, { pinned: !currentPinned });
-            if (success) {
-                for (var i = 0; i < notesData.length; i++) {
-                    if (notesData[i].id === id) {
-                        notesData[i].pinned = !notesData[i].pinned;
-                        break;
-                    }
-                }
-                renderNotes();
-            }
-        };
-
-        window.startNoteEdit = function(id) {
-            notesEditingId = id;
-            renderNotes();
-            setTimeout(function() {
-                var items = document.querySelectorAll('#notesList .note-item');
-                var found = null;
-                for (var i = 0; i < items.length; i++) {
-                    if (items[i].querySelector('.note-textarea-edit')) {
-                        found = items[i];
-                        break;
-                    }
-                }
-                if (found) {
-                    var textarea = found.querySelector('.note-textarea-edit');
-                    if (textarea) {
-                        textarea.focus();
-                        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
-                    }
-                }
-            }, 100);
-        };
-
-        window.saveNoteEdit = async function(id) {
-            var items = document.querySelectorAll('#notesList .note-item');
-            var found = null;
-            for (var i = 0; i < items.length; i++) {
-                if (items[i].querySelector('.note-textarea-edit')) {
-                    found = items[i];
-                    break;
-                }
-            }
-            if (found) {
-                var textarea = found.querySelector('.note-textarea-edit');
-                if (textarea) {
-                    var text = textarea.value.trim();
-                    if (!text) return;
-                    var success = await updateNoteInSupabase(id, { text: text });
-                    if (success) {
-                        for (var i = 0; i < notesData.length; i++) {
-                            if (notesData[i].id === id) {
-                                notesData[i].text = text;
-                                break;
-                            }
-                        }
-                        notesEditingId = null;
-                        renderNotes();
-                    }
-                }
-            }
-        };
-
-        window.cancelNoteEdit = function() {
-            notesEditingId = null;
+        window.deleteNote = function(index) {
+            notesData.splice(index, 1);
             renderNotes();
         };
 
-        // ===== ПОЖЕЛАНИЯ =====
-        async function addWish() {
-            var input = document.getElementById('wishesInput');
-            var text = input.value.trim();
-            if (!text) return;
-            var newWish = await addNoteToSupabase('wish', text);
-            if (newWish) {
-                wishesData.unshift(newWish);
-                input.value = '';
-                renderWishes();
-            }
-        }
-
-        window.deleteWish = async function(id) {
-            var success = await deleteNoteFromSupabase(id);
-            if (success) {
-                var newData = [];
-                for (var i = 0; i < wishesData.length; i++) {
-                    if (wishesData[i].id !== id) {
-                        newData.push(wishesData[i]);
-                    }
-                }
-                wishesData = newData;
-                wishesEditingId = null;
-                renderWishes();
-            }
-        };
-
-        window.toggleWishPin = async function(id, currentPinned) {
-            var success = await updateNoteInSupabase(id, { pinned: !currentPinned });
-            if (success) {
-                for (var i = 0; i < wishesData.length; i++) {
-                    if (wishesData[i].id === id) {
-                        wishesData[i].pinned = !wishesData[i].pinned;
-                        break;
-                    }
-                }
-                renderWishes();
-            }
-        };
-
-        window.startWishEdit = function(id) {
-            wishesEditingId = id;
-            renderWishes();
-            setTimeout(function() {
-                var items = document.querySelectorAll('#wishesList .note-item');
-                var found = null;
-                for (var i = 0; i < items.length; i++) {
-                    if (items[i].querySelector('.note-textarea-edit')) {
-                        found = items[i];
-                        break;
-                    }
-                }
-                if (found) {
-                    var textarea = found.querySelector('.note-textarea-edit');
-                    if (textarea) {
-                        textarea.focus();
-                        textarea.setSelectionRange(textarea.value.length, textarea.value.length);
-                    }
-                }
-            }, 100);
-        };
-
-        window.saveWishEdit = async function(id) {
-            var items = document.querySelectorAll('#wishesList .note-item');
-            var found = null;
-            for (var i = 0; i < items.length; i++) {
-                if (items[i].querySelector('.note-textarea-edit')) {
-                    found = items[i];
-                    break;
-                }
-            }
-            if (found) {
-                var textarea = found.querySelector('.note-textarea-edit');
-                if (textarea) {
-                    var text = textarea.value.trim();
-                    if (!text) return;
-                    var success = await updateNoteInSupabase(id, { text: text });
-                    if (success) {
-                        for (var i = 0; i < wishesData.length; i++) {
-                            if (wishesData[i].id === id) {
-                                wishesData[i].text = text;
-                                break;
-                            }
-                        }
-                        wishesEditingId = null;
-                        renderWishes();
-                    }
-                }
-            }
-        };
-
-        window.cancelWishEdit = function() {
-            wishesEditingId = null;
-            renderWishes();
-        };
-
-        // ===== ПОДКЛЮЧАЕМ СОБЫТИЯ =====
         document.getElementById('notesAddBtn').addEventListener('click', addNote);
         document.getElementById('notesInput').addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && !e.shiftKey) {
@@ -1088,6 +582,48 @@
                 addNote();
             }
         });
+
+        // =============================================================
+        // ПОЖЕЛАНИЯ
+        // =============================================================
+        var wishesData = [];
+
+        function renderWishes() {
+            var list = document.getElementById('wishesList');
+            if (wishesData.length === 0) {
+                list.innerHTML = '<div class="note-empty">🌟 Нет пожеланий. Напиши что хочешь!</div>';
+                return;
+            }
+            var html = '';
+            for (var i = 0; i < wishesData.length; i++) {
+                var w = wishesData[i];
+                html += '<div class="note-item">';
+                html += '<div class="note-text">' + w.text + '</div>';
+                html += '<div class="note-actions"><button class="delete-btn" onclick="deleteWish(' + i + ')">🗑️</button></div>';
+                html += '</div>';
+            }
+            list.innerHTML = html;
+        }
+
+        async function addWish() {
+            var input = document.getElementById('wishesInput');
+            var text = input.value.trim();
+            if (!text) return;
+
+            var success = await sendToGoogleSheets('wish', text);
+            if (success) {
+                wishesData.push({ text: text });
+                input.value = '';
+                renderWishes();
+            } else {
+                alert('Не удалось сохранить пожелание. Проверь интернет.');
+            }
+        }
+
+        window.deleteWish = function(index) {
+            wishesData.splice(index, 1);
+            renderWishes();
+        };
 
         document.getElementById('wishesAddBtn').addEventListener('click', addWish);
         document.getElementById('wishesInput').addEventListener('keydown', function(e) {
@@ -1097,21 +633,11 @@
             }
         });
 
-        // ===== ЗАГРУЗКА ДАННЫХ =====
-        async function loadAllData() {
-            notesData = await loadNotes('note');
-            wishesData = await loadNotes('wish');
-            renderNotes();
-            renderWishes();
-        }
-
-        loadAllData();
-
-        // ===== СТАРТ =====
+        // =============================================================
+        // СТАРТ
+        // =============================================================
         if (finalReasons.length > 0) {
             showReason(0);
-        } else {
-            reasonText.textContent = 'Загрузка...';
         }
     </script>
 </body>
