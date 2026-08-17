@@ -48,6 +48,7 @@
             z-index: 1;
         }
 
+        /* ===== ВКЛАДКИ ===== */
         .tabs {
             display: flex;
             gap: 6px;
@@ -81,6 +82,7 @@
             box-shadow: 0 0 30px rgba(255, 138, 172, 0.05);
         }
 
+        /* ===== СТРАНИЦЫ ===== */
         .page {
             display: none;
             animation: fadeIn 0.4s ease;
@@ -94,6 +96,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== ОБЩИЕ ЭЛЕМЕНТЫ ===== */
         h1 {
             background: linear-gradient(135deg, #ff8aac, #c084fc, #7aa9ff);
             background-clip: text;
@@ -153,6 +156,7 @@
             transition: opacity 0.2s ease;
         }
 
+        /* ===== КНОПКИ ===== */
         .btn-row {
             display: flex;
             gap: 12px;
@@ -207,6 +211,7 @@
             transform: scale(0.97);
         }
 
+        /* ===== СТРОКА ПОИСКА ===== */
         .search-row {
             display: flex;
             gap: 8px;
@@ -280,6 +285,7 @@
             font-weight: 300;
         }
 
+        /* ===== КАРУСЕЛЬ ===== */
         .carousel-wrapper {
             width: 100%;
             overflow: hidden;
@@ -343,6 +349,7 @@
             text-transform: uppercase;
         }
 
+        /* ===== ЗАМЕТКИ И ПОЖЕЛАНИЯ ===== */
         .note-app {
             text-align: left;
             margin-top: 6px;
@@ -565,6 +572,7 @@
             letter-spacing: 1px;
         }
 
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 640px) {
             .container { padding: 20px 16px; border-radius: 32px; }
             h1 { font-size: 1.8rem; }
@@ -603,6 +611,7 @@
             <button class="tab-btn" data-page="wishes">🌟 Пожелания</button>
         </div>
 
+        <!-- ===== СТРАНИЦА 1: ГЛАВНАЯ ===== -->
         <div class="page active" id="page-main">
 
             <h1>1001 причина</h1>
@@ -635,6 +644,7 @@
             <div class="footer">для тебя</div>
         </div>
 
+        <!-- ===== СТРАНИЦА 2: ЗАМЕТКИ ===== -->
         <div class="page" id="page-notes">
             <h1>📝 Заметки</h1>
             <div class="sub">записывай свои мысли</div>
@@ -651,6 +661,7 @@
             </div>
         </div>
 
+        <!-- ===== СТРАНИЦА 3: ПОЖЕЛАНИЯ ===== -->
         <div class="page" id="page-wishes">
             <h1>🌟 Пожелания</h1>
             <div class="sub">что ты хочешь мне сказать</div>
@@ -671,6 +682,9 @@
 
     <script src="reasons.js"></script>
     <script>
+        // =============================================================
+        // 1. ФОТОГРАФИИ
+        // =============================================================
         const photos = [
             "images/photo1.jpg",
             "images/photo2.jpg",
@@ -702,6 +716,9 @@
             track.appendChild(img);
         });
 
+        // =============================================================
+        // 2. ЛОГИКА ГЛАВНОЙ СТРАНИЦЫ
+        // =============================================================
         let currentIndex = 0;
         const reasonText = document.getElementById('reasonText');
         const counterDisplay = document.getElementById('counterDisplay');
@@ -748,6 +765,9 @@
             if (e.key === 'Enter') searchByNumber();
         });
 
+        // =============================================================
+        // 3. ВКЛАДКИ
+        // =============================================================
         const tabBtns = document.querySelectorAll('.tab-btn');
         const pages = {
             main: document.getElementById('page-main'),
@@ -766,6 +786,9 @@
             });
         });
 
+        // =============================================================
+        // 4. КОМПОНЕНТ ЗАМЕТОК
+        // =============================================================
         function createNoteApp(config) {
             const {
                 storageKey,
@@ -933,6 +956,10 @@
             return { addNote, deleteNote, togglePin, startEdit, saveEdit, cancelEdit, render, loadNotes };
         }
 
+        // =============================================================
+        // 5. СОЗДАЁМ КОМПОНЕНТЫ
+        // =============================================================
+
         const notesApp = createNoteApp({
             storageKey: 'love_notes_app',
             listId: 'notesList',
@@ -955,6 +982,9 @@
             label: 'пожеланий'
         });
 
+        // =============================================================
+        // 6. СТАРТ
+        // =============================================================
         if (typeof finalReasons !== 'undefined' && finalReasons.length > 0) {
             showReason(0);
         } else {

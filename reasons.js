@@ -51,15 +51,12 @@ const reasons = [
     "Я хочу, чтобы ты знала: ты — единственная, кто заставляет меня улыбаться."
 ];
 
-// Делаем 1001 причину путём дублирования с небольшими изменениями
-let allReasons = [...reasons];
-
-// Добавляем варианты, чтобы получить 1001 причину
 const variants = [
     "Твоя улыбка", "Твой смех", "Твой голос", "Твой взгляд",
     "Твоя искренность", "Твоя теплота", "Твоя энергия", "Твоя лёгкость"
 ];
 
+let allReasons = [...reasons];
 while (allReasons.length < 1001) {
     const base = reasons[Math.floor(Math.random() * reasons.length)];
     const variant = variants[Math.floor(Math.random() * variants.length)];
